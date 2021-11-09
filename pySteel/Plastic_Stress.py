@@ -194,25 +194,6 @@ if __name__ == "__main__":
     res = minimize_scalar(foo, bounds=(d_tos, d_tos+0.5*d_steel), method='bounded')
     c = res.x
     print("c (inches) = ",round(c,3))
-    """
-    delta_series = []
-    c_series = []
-    c = np.linspace(d_tos, d_tos+0.5*d_steel, 200)
-    #c = 13
-    #delta, F, y_na = optimize(delta_series, c_series)
-    for c_i in c:
-        delta = compute_plastic_stress(FC, FY, 
-                                            c_i, beta_1, d_tos, d_steel, 
-                                            b_f, b_w, t_f, d_conf, 
-                                            b_conf)[0]
-        delta_series.append(abs(delta))
-    
-    plt.plot(c, delta_series)
-    plt.grid(True)
-    plt.xlabel("c (inches) measured from top of beam")
-    plt.ylabel("unbalanced force (kips)")
-    print(c_series)
-    """
     
     delta, F, y_na = compute_plastic_stress(FC, FY, 
                                         c, beta_1, d_tos, d_steel, 
